@@ -1,0 +1,11 @@
+[build]
+  command = "pip install -r requirements.txt"
+  functions = "api"
+
+[functions]
+  directory = "api"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/index"
+  status = 200
