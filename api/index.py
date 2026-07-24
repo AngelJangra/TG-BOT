@@ -1,4 +1,4 @@
-# ==================== api/index.py (v6.1 - Netlify Compatible) ====================
+# ==================== api/index.py (Netlify Final) ====================
 import os
 import re
 import time
@@ -461,3 +461,9 @@ def all_links_admin():
 @app.route("/api/health", methods=["GET"])
 def health():
     return jsonify({"status": "alive", "version": "6.1", "features": "static-templates+random-urls"})
+
+# ------------------- NETLIFY HANDLER (CRITICAL) -------------------
+from aws_lambda_wsgi import response
+
+def handler(event, context):
+    return response(app, event, context)
